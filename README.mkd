@@ -1,0 +1,22 @@
+
+# go-stream
+
+## Introduction
+`stream` is a Go library which provides a buffered reader with convenient
+functions.
+
+## Usage
+
+The following example parses a HTTP header. Error return values are ignored.
+
+```
+	stream = NewStreamBytes([]byte("Content-Length: 42\r\n"))
+	stream.ReadUntilByteAndSkip(':') // yields []byte("Content-Length")
+	stream.SkipWhile(func(b byte) bool {
+		return b == ' ' || b == '\t'
+	})
+	stream.ReadUntilAndSkip([]byte{'\r', '\n'}) // yields []byte("42")
+```
+
+## Contact
+If you have an idea or a question, email me at <khaelin@gmail.com>.
