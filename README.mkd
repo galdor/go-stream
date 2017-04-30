@@ -7,15 +7,16 @@ functions.
 
 ## Usage
 
-The following example parses a HTTP header. Error return values are ignored.
+The following example parses what looks like a HTTP header. Error return
+values are ignored.
 
-```
-	stream = NewStreamBytes([]byte("Content-Length: 42\r\n"))
-	stream.ReadUntilByteAndSkip(':') // yields []byte("Content-Length")
-	stream.SkipWhile(func(b byte) bool {
-		return b == ' ' || b == '\t'
-	})
-	stream.ReadUntilAndSkip([]byte{'\r', '\n'}) // yields []byte("42")
+```go
+s = stream.NewStreamBytes([]byte("Content-Length: 42\r\n"))
+s.ReadUntilByteAndSkip(':') // yields []byte("Content-Length")
+s.SkipWhile(func(b byte) bool {
+	return b == ' ' || b == '\t'
+})
+s.ReadUntilAndSkip([]byte{'\r', '\n'}) // yields []byte("42")
 ```
 
 ## Contact
