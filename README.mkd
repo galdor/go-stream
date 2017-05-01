@@ -11,7 +11,7 @@ The following example parses what looks like a HTTP header. Error return
 values are ignored.
 
 ```go
-s = stream.NewStreamBytes([]byte("Content-Length: 42\r\n"))
+s := stream.NewStreamBytes([]byte("Content-Length: 42\r\n"))
 s.ReadUntilByteAndSkip(':') // yields []byte("Content-Length")
 s.SkipWhile(func(b byte) bool {
 	return b == ' ' || b == '\t'
